@@ -5,17 +5,14 @@ import Public from "./components/public";
 
 function App() {
   const [login, setLogin] = useState(false);
-  const [user, setUser] = useState({
-    name: 'Jesus Estrada',
-    email: 'jesusdavide@uninorte.edu.co',
-  });
+  const [user, setUser] = useState({});
   
   return (
     <>
       { login ? 
         <Private user={user} setLogin={setLogin} />
       :
-        <Public setLogin={setLogin} />
+        <Public setLogin={setLogin} setUser={setUser} />
     }
     </>
   )

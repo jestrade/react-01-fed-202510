@@ -1,5 +1,9 @@
-function Login({ setLogin }) {
+function Login({ setLogin, setUser }) {
     const handleLogin = () => {
+        setUser({
+            name: 'Jesus Estrada',
+            email: 'jesusdavide@uninorte.edu.co',
+          });
         setLogin(true);
     }
 
