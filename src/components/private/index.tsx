@@ -1,12 +1,17 @@
 import Counter from "./counter";
 
-function Private() {
+function Private({ user, setLogin }) {
+    const handleLogout = () => {
+        setLogin(false);
+    }
+
   return (
-    <div>
+    <>
       <h1>Private</h1>
-      <p>This is a private page.</p>
+      <p>Welcome {user.name}</p>
       <Counter />
-    </div>
+      <p><button type="button" onClick={handleLogout}>Logout</button></p>
+    </>
   );
 }
 export default Private;
