@@ -1,8 +1,12 @@
 import { useCounter } from "./hooks/useCounter";
 import * as Sentry from "@sentry/react";
+import { useFeatureIsOn } from "@growthbook/growthbook-react";
 
 function Counter() {
   const { count, handleIncrement, handleDecrement } = useCounter();
+  const enabled = useFeatureIsOn("my-experiment");
+
+  console.log("enabled", enabled);
 
   return (
     <>
@@ -14,17 +18,6 @@ function Counter() {
       <button type="button" id="decrement" onClick={handleDecrement}>
         -
       </button>
-
-      <br />
-      <button
-        onClick={() => {
-          Sentry.captureMessage("Something went wrong");
-          throw new Error("This is your first error!");
-        }}
-      >
-        Break the world
-      </button>
-      <br />
     </>
   );
 }
