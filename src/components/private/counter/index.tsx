@@ -1,32 +1,30 @@
-import { useState, useEffect, use } from 'react';
+import { useCounter } from "./hooks/useCounter";
+import * as Sentry from "@sentry/react";
 
-function Counter () {
-  // states
-  const [count, setCount] = useState(0);
-  // handlers
-  const handleIncrement = () => {
-    setCount(count + 1);
-  }
-  const handleDecrement = () => {
-    if (count <= 0) return;
-    
-    setCount(count - 1);
-  }
-  // effects
-  useEffect(() => {
-    console.log('Component mounted');
-  }, []);
-  
-  useEffect(() => {
-    console.log(`Count is ${count}`);
-  }, [count]);
+function Counter() {
+  const { count, handleIncrement, handleDecrement } = useCounter();
 
   return (
     <>
       <h1>Counter</h1>
       <p>{count}</p>
-      <button type="button" onClick={handleIncrement}>+</button>
-      <button type="button" onClick={handleDecrement}>-</button>
+      <button type="button" id="increment" onClick={handleIncrement}>
+        +
+      </button>
+      <button type="button" id="decrement" onClick={handleDecrement}>
+        -
+      </button>
+
+      <br />
+      <button
+        onClick={() => {
+          Sentry.captureMessage("Something went wrong");
+          throw new Error("This is your first error!");
+        }}
+      >
+        Break the world
+      </button>
+      <br />
     </>
   );
 }
