@@ -1,6 +1,6 @@
 import { useCounter } from "./hooks/useCounter";
-import * as Sentry from "@sentry/react";
 import { useFeatureIsOn } from "@growthbook/growthbook-react";
+import { StyledButton, Title } from "./styled";
 
 function Counter() {
   const { count, handleIncrement, handleDecrement } = useCounter();
@@ -10,14 +10,14 @@ function Counter() {
 
   return (
     <>
-      <h1>Counter</h1>
+      <Title>Counter</Title>
       <p>{count}</p>
-      <button type="button" id="increment" onClick={handleIncrement}>
+      <StyledButton type="button" id="increment" onClick={handleIncrement}>
         +
-      </button>
-      <button type="button" id="decrement" onClick={handleDecrement}>
+      </StyledButton>
+      <StyledButton type="button" id="decrement" onClick={handleDecrement}>
         -
-      </button>
+      </StyledButton>
     </>
   );
 }
