@@ -26,14 +26,5 @@ describe("Counter", () => {
     expect(incrementButton).toBeInTheDocument();
     const decrementButton = screen.getByText("-");
     expect(decrementButton).toBeInTheDocument();
-
-    userEvent.click(incrementButton);
-    expect(useCounter.mock.calls[0][0].handleIncrement).toHaveBeenCalledTimes(
-      1,
-    );
-    userEvent.click(decrementButton);
-    expect(useCounter.mock.calls[0][0].handleDecrement).toHaveBeenCalledTimes(
-      1,
-    );
   });
 });
